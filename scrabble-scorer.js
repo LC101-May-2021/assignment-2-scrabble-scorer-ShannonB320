@@ -64,17 +64,17 @@ let vowelBonusScore = function(word) {
 let scorerA = {
   name: "Simple",
   description: "One point per character",
-  scorerFunction: simpleScore,
+  scoringFunction: simpleScore,
 };
 let scorerB = {
   name: "Vowel Bonus",
   description: "Vowels are worth 3 points",
-  scorerFunction: vowelBonusScore,
+  scoringFunction: vowelBonusScore,
 };
 let scorerC = {
   name: "Scrabble",
   description: "Uses Scrabble point system",
-  scorerFunction: oldScrabbleScorer,
+  scoringFunction: oldScrabbleScorer,
 };
 
 let scrabbleScore = function(word) {
@@ -100,11 +100,11 @@ function scorerPrompt(word) {
     scoreType = input.question("Invalid input. Enter 0, 1, or 2: ");
   }
   if (scoreType === "0") {
-    return scoringAlgorithms[0].scorerFunction(word);
+    return scoringAlgorithms[0].scoringFunction(word);
   } else if (scoreType === "1") {
-    return scoringAlgorithms[1].scorerFunction(word);
+    return scoringAlgorithms[1].scoringFunction(word);
   } else {
-    return scoringAlgorithms[2].scorerFunction(word);
+    return scoringAlgorithms[2].scoringFunction(word);
   }
 }
 
@@ -122,7 +122,7 @@ function transform(object) {
 
 
 let newPointStructure = transform(oldPointStructure);
-scorerC["scorerFunction"] = scrabbleScore
+scorerC["scoringFunction"] = scrabbleScore
 newPointStructure[" "] = 0;
 console.log(newPointStructure);
 
